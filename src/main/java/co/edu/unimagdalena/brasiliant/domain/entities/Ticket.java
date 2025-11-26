@@ -28,7 +28,7 @@ public class Ticket {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "passenger_id", nullable = false)
-    private AppUser passenger;
+    private User passenger;
 
     @Column(nullable = false, name = "seat_number")
     private String seatNumber;

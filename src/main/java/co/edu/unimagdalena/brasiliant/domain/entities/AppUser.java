@@ -1,33 +1,25 @@
 package co.edu.unimagdalena.brasiliant.domain.entities;
 
 import co.edu.unimagdalena.brasiliant.domain.enums.Role;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.OffsetDateTime;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
 import java.util.Set;
 
 @Data
 @Entity
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
-public class AppUser {
-    @Id
-    @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false, name = "last_name")
-    private String lastName;
+@Table(name = "app_users")
+@EqualsAndHashCode(callSuper = true)
+public class AppUser extends User {
+    @MapsId
+    @OneToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -35,20 +27,13 @@ public class AppUser {
     @Column(nullable = false, name = "password_hash")
     private String passwordHash;
 
-    @Column(nullable = false, unique = true, length = 15)
-    private String phone;
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean active = true;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role")
     private Set<Role> roles;
-
-    @Column(nullable = false)
-    @Builder.Default
-    private Boolean active = true;
-
-    @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private OffsetDateTime createdAt;
 }
