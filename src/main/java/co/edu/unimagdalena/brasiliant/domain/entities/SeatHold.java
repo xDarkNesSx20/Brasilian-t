@@ -14,7 +14,7 @@ import java.time.OffsetDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "seats_held")
+@Table(name = "seats_hold")
 public class SeatHold {
     @Id
     @Column(name = "seat_hold_id")

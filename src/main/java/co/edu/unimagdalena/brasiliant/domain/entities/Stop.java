@@ -27,8 +27,8 @@ public class Stop {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private Integer order;
+    @Column(nullable = false, name = "stop_order")
+    private Integer stopOrder;
 
     private BigDecimal latitude;
     private BigDecimal longitude;

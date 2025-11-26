@@ -22,6 +22,6 @@ public class Config {
     @Column(nullable = false, unique = true)
     private String key;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 6, scale = 2)
     private BigDecimal value;
 }

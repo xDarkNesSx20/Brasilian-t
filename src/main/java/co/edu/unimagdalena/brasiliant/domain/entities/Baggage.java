@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "baggages")
+@Table(name = "baggage")
 public class Baggage {
     @Id
     @Column(name = "baggage_id")
@@ -24,10 +24,10 @@ public class Baggage {
     @JoinColumn(name = "ticket_id", nullable = false)
     private Ticket ticket;
 
-    @Column(name = "weight_kg", nullable = false)
+    @Column(name = "weight_kg", nullable = false, precision = 5, scale = 2)
     private BigDecimal weightKg;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 8, scale = 2)
     @Builder.Default
     private BigDecimal fee = BigDecimal.ZERO;
 

@@ -41,7 +41,7 @@ public class Ticket {
     @JoinColumn(name = "to_stop_id", nullable = false)
     private Stop toStop;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 8, scale = 2)
     private BigDecimal price;
 
     @Enumerated(EnumType.STRING)

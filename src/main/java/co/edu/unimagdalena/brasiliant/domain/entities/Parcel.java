@@ -21,7 +21,7 @@ public class Parcel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, updatable = false)
+    @Column(nullable = false, unique = true, updatable = false, length = 16)
     private String code;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,7 +32,7 @@ public class Parcel {
     @JoinColumn(name = "to_stop_id", nullable = false)
     private Stop toStop;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision =  8, scale = 2)
     private BigDecimal price;
 
     @ManyToOne

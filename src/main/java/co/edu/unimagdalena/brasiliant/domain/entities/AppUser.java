@@ -16,11 +16,6 @@ import java.util.Set;
 @Table(name = "app_users")
 @EqualsAndHashCode(callSuper = true)
 public class AppUser extends User {
-    @MapsId
-    @OneToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
-    private User user;
-
     @Column(unique = true, nullable = false)
     private String email;
 

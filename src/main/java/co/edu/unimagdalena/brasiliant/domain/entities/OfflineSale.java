@@ -45,7 +45,7 @@ public class OfflineSale {
     @Column(name = "passenger_phone", unique = true)
     private String passengerPhone;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 8, scale = 2)
     private BigDecimal price;
 
     @Enumerated(EnumType.STRING)

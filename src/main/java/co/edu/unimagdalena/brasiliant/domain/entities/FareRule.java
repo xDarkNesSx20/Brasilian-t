@@ -35,7 +35,7 @@ public class FareRule {
     @JoinColumn(name = "to_stop_id", nullable = false)
     private Stop toStop;
 
-    @Column(name = "base_price", nullable = false)
+    @Column(name = "base_price", nullable = false, precision = 8, scale = 2)
     private BigDecimal basePrice;
 
     @OneToMany(mappedBy = "fareRule")

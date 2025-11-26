@@ -32,9 +32,9 @@ public class Route {
     @Column(nullable = false)
     private String destination;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "distance_km", precision = 6, scale = 2)
     private BigDecimal distanceKm;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "duration_min")
     private Integer durationMin;
 }
