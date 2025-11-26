@@ -197,6 +197,7 @@ CREATE TABLE baggage(
     weight_kg NUMERIC(5,2) NOT NULL,
     fee NUMERIC(8,2) NOT NULL DEFAULT 0.0,
     tag_code VARCHAR(14) UNIQUE NOT NULL,
+    trunk_number INTEGER,
     CONSTRAINT fk_tickets_baggage FOREIGN KEY(ticket_id) REFERENCES tickets(ticket_id) ON DELETE CASCADE
 );
 

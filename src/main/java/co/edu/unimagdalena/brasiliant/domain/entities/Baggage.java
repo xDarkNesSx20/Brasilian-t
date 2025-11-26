@@ -33,4 +33,7 @@ public class Baggage {
 
     @Column(nullable = false, unique = true, length = 14, updatable = false)
     private String tagCode;
+
+    @Column(name = "trunk_number")
+    private Integer trunkNumber;
 }
