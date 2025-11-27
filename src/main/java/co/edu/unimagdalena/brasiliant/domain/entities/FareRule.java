@@ -46,8 +46,9 @@ public class FareRule {
     @Builder.Default
     private Boolean dynamicPricing = false;
 
-    public void addDiscounts(Discount... discounts) {
-        this.discounts.addAll(List.of(discounts));
+    public void addDiscounts(Set<Discount> discounts) {
+        discounts.forEach(d -> d.setFareRule(this));
+        this.discounts.addAll(discounts);
     }
 
     public void clearDiscounts() {

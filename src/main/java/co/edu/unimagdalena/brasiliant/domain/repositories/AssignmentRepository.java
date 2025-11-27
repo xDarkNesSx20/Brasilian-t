@@ -20,9 +20,6 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
     List<Assignment> findByDispatcher_Id(Long dispatcherId);
     boolean existsByTrip_Id(Long tripId);
 
-    @Query("SELECT A FROM Assignment A JOIN FETCH Trip T ON A.trip.id = T.id WHERE A.id = :id")
-    Optional<Assignment> findByIdWithTripDetails(@Param("id") Long id);
-
     @EntityGraph(attributePaths = {"trip", "driver", "dispatcher"})
     @Query("SELECT A FROM Assignment A WHERE A.id = :id")
     Optional<Assignment> findByIdWithAllDetails(@Param("id") Long id);

@@ -1,0 +1,25 @@
+package co.edu.unimagdalena.brasiliant.api.dto;
+
+import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
+import java.time.OffsetDateTime;
+
+public class AssignmentDTOs {
+    public record AssignmentCreateRequest(@NotNull Long driverId, @NotNull Long dispatcherId) implements Serializable {
+    }
+
+    public record AssignmentUpdateRequest(Long driverId, Long dispatcherId,
+                                          Boolean checkListOk) implements Serializable {
+    }
+
+    public record AssignmentResponse(Long id, Long tripId, Long driverId, Long dispatcherId, OffsetDateTime assignedAt,
+                                     Boolean checkListOk) implements Serializable {
+    }
+
+    public record AssignmentDetailsResponse(Long id, Long tripId, UserSummary driver, UserSummary dispatcher,
+                                            OffsetDateTime assignedAt, Boolean checkListOk) implements Serializable {
+    }
+
+    public record UserSummary(Long id, String fullName) implements Serializable {}
+}
