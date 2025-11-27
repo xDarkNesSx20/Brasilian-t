@@ -23,4 +23,11 @@ public interface BusRepository extends JpaRepository<Bus, Long> {
         GROUP BY B.bus_id HAVING COUNT(DISTINCT A.name) = :requiredCant
     """, nativeQuery = true)
     List<Bus> findByAmenitiesNameIn(@Param("amenities") Collection<String> amenities, @Param("requiredCant") Integer requiredCant);
+
+    @Query(value = """
+        SELECT * FROM buses B
+        JOIN bus_amenities BA ON BA.bus_id = B.bus_id
+        JOIN amenities A on BA.amenity_id = A.amenity_id
+    """, nativeQuery = true)
+    Optional<Bus> findByIdWithAmenities(Long id);
 }
