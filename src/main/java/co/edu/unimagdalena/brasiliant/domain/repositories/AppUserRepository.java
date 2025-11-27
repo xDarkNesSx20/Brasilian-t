@@ -4,6 +4,7 @@ import co.edu.unimagdalena.brasiliant.domain.entities.AppUser;
 import co.edu.unimagdalena.brasiliant.domain.enums.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,5 +24,5 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
         JOIN user_roles R ON R.user_id = U.user_id
         WHERE R.role IN :roles
     """, nativeQuery = true)
-    List<AppUser> findByHavingRoles(Collection<Role> roles);
+    List<AppUser> findByHavingRoles(@Param("roles") Collection<Role> roles);
 }

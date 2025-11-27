@@ -28,6 +28,7 @@ public interface BusRepository extends JpaRepository<Bus, Long> {
         SELECT * FROM buses B
         JOIN bus_amenities BA ON BA.bus_id = B.bus_id
         JOIN amenities A on BA.amenity_id = A.amenity_id
+        WHERE B.bus_id = :id
     """, nativeQuery = true)
-    Optional<Bus> findByIdWithAmenities(Long id);
+    Optional<Bus> findByIdWithAmenities(@Param("id") Long id);
 }

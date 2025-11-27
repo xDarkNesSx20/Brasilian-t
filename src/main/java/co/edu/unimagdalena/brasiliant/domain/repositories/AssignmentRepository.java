@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -20,9 +21,9 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
     boolean existsByTrip_Id(Long tripId);
 
     @Query("SELECT A FROM Assignment A JOIN FETCH Trip T ON A.trip.id = T.id WHERE A.id = :id")
-    Optional<Assignment> findByIdWithTripDetails(Long id);
+    Optional<Assignment> findByIdWithTripDetails(@Param("id") Long id);
 
     @EntityGraph(attributePaths = {"trip", "driver", "dispatcher"})
     @Query("SELECT A FROM Assignment A WHERE A.id = :id")
-    Optional<Assignment> findByIdWithAllDetails(Long id);
+    Optional<Assignment> findByIdWithAllDetails(@Param("id") Long id);
 }

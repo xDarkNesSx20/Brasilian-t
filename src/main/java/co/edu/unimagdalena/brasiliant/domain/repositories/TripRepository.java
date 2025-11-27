@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -23,5 +24,5 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     @EntityGraph(attributePaths = {"route", "bus"})
     @Query("SELECT T FROM Trip T WHERE T.id = :tripId")
-    Optional<Trip> findByIdWithAllDetails(Long tripId);
+    Optional<Trip> findByIdWithAllDetails(@Param("tripId") Long tripId);
 }
