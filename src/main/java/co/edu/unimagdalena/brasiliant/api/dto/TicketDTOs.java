@@ -1,5 +1,6 @@
 package co.edu.unimagdalena.brasiliant.api.dto;
 
+import co.edu.unimagdalena.brasiliant.api.dto.CommonSummaryDTOs.*;
 import co.edu.unimagdalena.brasiliant.domain.enums.PaymentMethod;
 import co.edu.unimagdalena.brasiliant.domain.enums.TicketStatus;
 import jakarta.validation.constraints.NotBlank;
@@ -24,17 +25,8 @@ public class TicketDTOs {
                                  String qrCode) implements Serializable {
     }
 
-    public record TicketDetailsResponse(Long id, TripSummary trip, StopSummary fromStop, StopSummary toStop,
+    public record TicketDetailsResponse(Long id, Long tripId, StopSummary fromStop, StopSummary toStop,
                                         UserSummary passenger, BigDecimal price, PaymentMethod paymentMethod,
                                         TicketStatus status, String qrCode) implements Serializable {
-    }
-
-    public record TripSummary(Long id, String name) implements Serializable {
-    }
-
-    public record StopSummary(Long id, String name, Integer stopOrder) implements Serializable {
-    }
-
-    public record UserSummary(Long id, String fullName) implements Serializable {
     }
 }

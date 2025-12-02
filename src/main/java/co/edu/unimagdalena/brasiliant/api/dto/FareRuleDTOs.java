@@ -3,6 +3,7 @@ package co.edu.unimagdalena.brasiliant.api.dto;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import co.edu.unimagdalena.brasiliant.api.dto.DiscountDTOs.*;
+import co.edu.unimagdalena.brasiliant.api.dto.CommonSummaryDTOs.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -30,11 +31,5 @@ public class FareRuleDTOs {
     public record FareRuleDetailsResponse(Long id, RouteSummary route, StopSummary fromStop, StopSummary toStop,
                                           BigDecimal basePrice, Boolean dynamicPricing,
                                           Set<DiscountResponse> discounts) implements Serializable {
-    }
-
-    public record RouteSummary(Long id, String name) implements Serializable {
-    }
-
-    public record StopSummary(Long id, String name, Integer stopOrder) implements Serializable {
     }
 }
